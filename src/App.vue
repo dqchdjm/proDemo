@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import Home from '@a/home'
 import ut from '@u/index'
 export default {
     name: 'App',
@@ -13,9 +14,17 @@ export default {
         return {}
     },
     mounted () {
+        console.log(this.$route)
         ut.alert()
-        let i = 0
-        console.log(i)
+        // Home.home().then((d) => {
+        //     console.log(d)
+        // })
+        Home.users().then((d) => {
+            console.log(d)
+        })
+        Home.login().then((d) => {
+            console.log(d)
+        })
     }
 }
 </script>
