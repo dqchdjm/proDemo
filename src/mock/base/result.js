@@ -1,11 +1,10 @@
 class Result {
     /**
-     * @param error_code
      * @param data
      * @param timeout
      * @returns {Promise<any>}
      */
-    result (error_code, data, timeout = 200) {
+    result (data, timeout = 200) {
         return data
     }
     /**
@@ -14,12 +13,11 @@ class Result {
      * @param msg
      */
     success (data, msg = '成功') {
-        return this.result(200, {
-            success: true,
+        return this.result({
             error_code: 0,
             msg,
             data
-        })
+        }, 2000)
     }
     /**
      * 错误返回
@@ -28,8 +26,7 @@ class Result {
      * @returns {Promise<any>}
      */
     error (msg, error_code = 1001) {
-        return this.result(200, {
-            success: true,
+        return this.result({
             error_code,
             msg,
             data: null

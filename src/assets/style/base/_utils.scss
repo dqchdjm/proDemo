@@ -1,0 +1,288 @@
+/**
+ * Created by henian.xu on 2017/7/3 0003.
+ * 实用工具类
+ */
+
+// 浮动与清除浮动
+.fn-left {
+    float: left;
+}
+
+.fn-right {
+    float: right;
+}
+
+
+// 隐藏
+.fn-hide {
+    overflow: hidden !important;
+}
+
+// 超出隐藏
+.fn-hidden {
+    overflow: hidden !important;
+}
+
+.fn-hidden-x {
+    overflow-x: hidden !important;
+}
+
+.fn-hidden-y {
+    overflow-y: hidden !important;
+}
+
+// 字体大小
+.fs-tiny {
+    font-size: 70% !important;
+}
+
+.fs-small {
+    font-size: 80% !important;
+}
+
+.fs-little {
+    font-size: 90% !important;
+}
+
+.fs-normal {
+    font-size: inherit !important;
+}
+
+.fs-big {
+    font-size: 120% !important;
+}
+
+.fs-more {
+    font-size: 140% !important;
+}
+
+.fs-super {
+    font-size: 180% !important;
+}
+
+// 字体加粗
+.fw-bold {
+    font-weight: bold !important;
+}
+
+.fw-normal {
+    font-weight: normal !important;
+}
+
+// 文本对齐
+@each $key, $value in (c:center, l:left, r:right, j:justify) {
+    .ta-#{$key} {
+        text-align: $value !important;
+    }
+}
+
+// 垂直对齐
+@each $key, $value in (t:top, m:middle, b:bottom) {
+    .va-#{$key} {
+        vertical-align: $value !important;
+    }
+}
+
+// 1px 边框
+@each $key, $value in (a:'', t:'-top', r:'-right', b:'-bottom', l:'-left') {
+    .bor-#{$key} {
+        border#{$value}: 1px solid $color-border !important;
+    }
+    .nbor-#{$key} {
+        border#{$value}: 0 !important;
+    }
+}
+
+// 模盒
+@each $key, $value in (b:block, i:inline, ib:inline-block) {
+    .dp-#{$key} {
+        display: $value !important;
+    }
+}
+
+.dp-fx {
+    display: flex !important;
+}
+
+.fx-row {
+    flex-direction: row !important;;
+}
+
+.fx-col {
+    flex-direction: column !important;;
+}
+
+.fx-jc-fs {
+    justify-content: flex-start !important;;
+}
+
+.fx-jc-fe {
+    justify-content: flex-end !important;;
+}
+
+.fx-jc-c {
+    justify-content: center !important;;
+}
+
+.fx-jc-sb {
+    justify-content: space-between !important;;
+}
+
+.fx-jc-sa {
+    justify-content: space-around !important;;
+}
+
+.fx-ai-fs {
+    align-items: flex-start !important;;
+}
+
+.fx-ai-fe {
+    align-items: flex-end !important;;
+}
+
+.fx-ai-c {
+    align-items: center !important;;
+}
+
+.fx-ai-s {
+    align-items: stretch !important;;
+}
+
+.fx-as-fs {
+    align-self: flex-start !important;;
+}
+
+.fx-as-fe {
+    align-self: flex-end !important;;
+}
+
+.fx-as-c {
+    align-self: center !important;;
+}
+
+.fx-as-s {
+    align-self: stretch !important;;
+}
+
+// 宽度
+@for $i from 1 through 20 {
+    .w-#{$i * 5}per {
+        width: $i * 5% !important;
+    }
+}
+
+@for $i from 1 through 20 {
+    .w-#{$i * 5}px {
+        width: $i * 5px !important;
+    }
+}
+
+@for $i from 1 through 20 {
+    .w-#{$i}em {
+        width: $i + em !important;
+    }
+}
+
+// 高度
+@for $i from 1 through 20 {
+    .h-#{$i * 5}per {
+        height: $i * 5% !important;
+    }
+}
+
+@for $i from 1 through 20 {
+    .h-#{$i * 5}px {
+        height: $i * 5px !important;
+    }
+}
+
+@for $i from 1 through 20 {
+    .h-#{$i}em {
+        height: $i + em !important;
+    }
+}
+
+// 行高
+@for $i from 1 through 20 {
+    .lh-#{$i * 5}per {
+        line-height: $i * 5% !important;
+    }
+}
+
+@for $i from 1 through 20 {
+    .lh-#{$i * 5}px {
+        line-height: $i * 5px !important;
+    }
+}
+
+@for $i from 1 through 20 {
+    .lh-#{$i}em {
+        line-height: $i + em !important;
+    }
+}
+
+.lh-normal {
+    line-height: $line-height !important;
+}
+
+// 字体颜色
+.tc-base {
+    color: $color-text !important;
+}
+
+@each $key, $value in $colorList {
+    .tc-#{$key} {
+        color: $value !important;
+    }
+}
+
+// 背景颜色
+@each $key, $value in $colorList {
+    .bc-#{$key} {
+        background-color: $value !important;
+    }
+}
+
+.bc-t {
+    background-color: transparent !important;
+}
+
+// 间距
+@each $key, $value in (a:'', t:'-top', r:'-right', b:'-bottom', l:'-left') {
+    /* small */
+    .ma-#{$key}s {
+        margin#{$value}: $margin-small !important;
+    }
+    .pa-#{$key}s {
+        padding#{$value}: $margin-small !important;
+    }
+    .ma-bor-#{$key}s {
+        border#{$value}: $margin-small solid mix(#000, $color-body, 10%) !important;
+    }
+    /* normal */
+    .ma-#{$key} {
+        margin#{$value}: $margin !important;
+    }
+    .nma-#{$key} {
+        margin#{$value}: 0 !important;
+    }
+    .pa-#{$key} {
+        padding#{$value}: $padding !important;
+    }
+    .npa-#{$key} {
+        padding#{$value}: 0 !important;
+    }
+    .ma-bor-#{$key} {
+        border#{$value}: $margin solid mix(#000, $color-body, 5%) !important;
+    }
+    /* big */
+    .ma-#{$key}b {
+        margin#{$value}: $margin-big !important;
+    }
+    .pa-#{$key}b {
+        padding#{$value}: $margin-big !important;
+    }
+    .ma-bor-#{$key}b {
+        border#{$value}: $margin-big solid mix(#000, $color-body, 5%) !important;
+    }
+}

@@ -1,0 +1,21 @@
+/**
+ * Created by henian.xu on 2017/7/4 0004.
+ *
+ */
+
+
+ @font-face {
+    font-family: "Fonticon";
+    src: url('~@/assets/fonts/iconfont.eot?t=1545032650644'); /* IE9*/
+    src: url('~@/assets/fonts/iconfont.eot?t=1545032650644#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('~@/assets/fonts/iconfont.ttf?t=1545032650644') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('~@/assets/fonts/iconfont.svg?t=1545032650644#iconfont') format('svg'); /* iOS 4.1- */
+  }
+  
+  
+.f-icon {
+    @include make-icon;
+}
+
+
+

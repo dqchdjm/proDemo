@@ -1,0 +1,43 @@
+/**
+ * Created by henian.xu on 2017/6/21.
+ *
+ */
+
+* {
+    border: none;
+    font-size: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    text-rendering: geometricPrecision; //如何优化显示文本
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+
+    &:before,
+    &:after {
+        box-sizing: border-box;
+    }
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    font-family: $font-family;
+    //font-size: $html-font-size;
+}
+
+body {//设置body主样式
+    font-size: $body-font-size;
+    line-height: $line-height;
+    background-color: $color-body;
+    //background: $color-body url("~@ai/bg.jpg") left top repeat;
+    color: $color-text;
+}
+
+a {
+    text-decoration: none;
+}
+

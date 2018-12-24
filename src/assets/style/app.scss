@@ -1,0 +1,15 @@
+@charset "utf-8";
+/**
+ * 全局样式出口
+ */
+@import "mixin/index";
+@import "variables/index";
+@import "base/index";
+// @import "../fonts/iconfont.css";
+@import "components/index";
+
+
+// 为了 屏蔽 uc 广告
+div[id^="_"] {
+    display: none !important;
+}

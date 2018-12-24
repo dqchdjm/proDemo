@@ -1,0 +1,102 @@
+/**
+ * Created by henian.xu on 2017/7/3 0003.
+ * 网格布局
+ */
+
+// 生成列
+@mixin make-column($column) {
+    @for $i from 1 through $column {
+        .#{$pf}col-#{$i} {
+            width: (100% / $column * $i);
+        }
+    }
+}
+
+// 生成列(百分比)
+@mixin make-column-per($column) {
+    @for $i from 1 through $column {
+        .#{$pf}col-#{$i * 10}per {
+            width: ($i * 10%);
+        }
+    }
+}
+
+// 偏移
+@mixin make-offset($column) {
+    @for $i from 1 through $column {
+        &.#{$pf}offset-left-#{$i} {
+            position: relative;
+            left: -(100% / $column * $i);
+        }
+        &.#{$pf}offset-right-#{$i} {
+            position: relative;
+            right: -(100% / $column * $i);
+        }
+    }
+}
+
+.#{$pf}container {
+    width: $page-min-width;
+    margin-left: auto;
+    margin-right: auto;
+
+    &.#{$pf}fill {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+}
+
+.#{$pf}row {
+    @include clearfix;
+    margin: ($grid-spacing / 1) ($grid-spacing / -2);
+}
+
+@include make-column($grid-column);
+@include make-column-per(10);
+
+[class*="#{$pf}col-"] {
+    float: left;
+    padding-left: ($grid-spacing / 2);
+    padding-right: ($grid-spacing / 2);
+
+    @include make-offset($grid-column);
+}
+
+// 扩展
+
+.#{$pf}container {
+    &.no-spacing {
+        > .#{$pf}row {
+            margin: 0;
+            > [class*="#{$pf}col-"] {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+}
+
+.#{$pf}row {
+    &.no-spacing {
+        margin: 0;
+        > [class*="#{$pf}col-"] {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
