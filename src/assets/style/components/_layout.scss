@@ -2,194 +2,130 @@
  * Created by henian.xu on 2017/6/21.
  * layout 布局
  */
-html,
-body,
-#app {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-$headerHeight: 1rem !default;
-$secondHeaderHeight: .8rem !default;
-$footerHeight: 1rem !default;
-$secondFooterHeight: .8rem !default;
-.pages {
-    position: relative;
-    z-index: $z-index-1;
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-}
-
-.page {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
-    background-color: $color-body;
-
-    /*----------------定位----------------*/
-    > .header,
-    > .second-header,
-    > .footer,
-    > .second-footer,
-    > .container {
-        flex: 0 0 auto;
-        position: relative;
-    }
-
-    > .container {
-        order: 3;
-        flex: 1 1 auto;
-        z-index: $z-index-1;
-        overflow-x: hidden;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        height: 100%;
-    }
-
-    > .header {
-        order: 1;
-        z-index: $z-index-3;
-        min-height: $headerHeight;
-    }
-    > .second-header {
-        order: 2;
-        z-index: $z-index-3;
-        min-height: $secondHeaderHeight;
-    }
-    > .second-footer {
-        order: 4;
-        z-index: $z-index-2;
-        min-height: $secondFooterHeight;
-    }
-    > .footer {
-        order: 5;
-        z-index: $z-index-2;
-        min-height: $footerHeight;
-    }
-    /*----------------风格----------------*/
-    > .header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: stretch;
-        background-color: $color-main;
-        color: #fff;
-        text-align: center;
-        line-height: $headerHeight;
-
-        > .ctrl-left {
-            order: 0;
-        }
-        > .label {
-            flex: 1 1 auto;
-            font-size: .4rem;
-            order: 1;
-            @include text-line(1);
-        }
-        > .ctrl-right {
-            order: 2;
-        }
-        > .ctrl-left,
-        > .ctrl-right {
-            white-space: nowrap;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: stretch;
-            > .btn {
-                min-width: $headerHeight;
-                height: auto;
-                padding: 0;
-            }
-        }
-    }
-    > .second-header {
-        border-bottom: 1px solid $color-border;
-    }
-    > .footer {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: stretch;
-        line-height: calc(#{$footerHeight} - 1px);
-        border-top: 1px solid $color-border;
-        //background-color: #fff;
-
-        > .btn {
-            flex-grow: 1;
-            width: 1%;
-        }
-    }
-    > .second-footer {
-        border-top: 1px solid $color-border;
-    }
-    > .container {
-    }
-}
-
-.page-header {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    background-color: $color-main;
-    color: #fff;
-    text-align: center;
-    line-height: $headerHeight;
-    z-index: $z-index-3;
-    min-height: $headerHeight;
-    > .ctrl-left {
-        order: 0;
-    }
-    > .label {
-        flex: 1 1 auto;
-        font-size: .4rem;
-        order: 1;
-        @include text-line(1);
-    }
-    > .ctrl-right {
-        order: 2;
-    }
-    > .ctrl-left,
-    > .ctrl-right {
-        white-space: nowrap;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: stretch;
-        > .btn {
-            min-width: $headerHeight;
-            height: auto;
-            padding: 0;
-        }
-    }
-}
-.page-footer {
-    position: relative;
-    z-index: $z-index-2;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    background-color: #fff;
-    line-height: $footerHeight;
-    min-height: $footerHeight;
-    > .btn {
-        flex: 1 1 1%;
-    }
-}
+/**
+ * Created by henian.xu on 2017/7/31.
+ *
+ */
+ html,
+ body,
+ .pages,
+ .page {
+     width: 100%;
+     height: 100%;
+     overflow: hidden;
+ }
+ 
+ $headerHeight: 1rem !default;
+ $secondHeaderHeight: .8rem !default;
+ $footerHeight: 1rem !default;
+ $secondFooterHeight: .8rem !default;
+ .page {
+     position: absolute;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     align-items: stretch;
+ 
+     /*----------------定位----------------*/
+     > .header,
+     > .second-header,
+     > .footer,
+     > .second-footer,
+     > .container {
+         flex: 0 0 auto;
+         position: relative;
+     }
+ 
+     > .container {
+         order: 3;
+         flex: 1 1 auto;
+         z-index: $z-index-1;
+         overflow-x: hidden;
+         overflow-y: auto;
+         -webkit-overflow-scrolling: touch;
+     }
+ 
+     > .header {
+         order: 1;
+         z-index: $z-index-3;
+         min-height: $headerHeight;
+     }
+     > .second-header {
+         order: 2;
+         z-index: $z-index-3;
+         min-height: $secondHeaderHeight;
+     }
+     > .second-footer {
+         order: 4;
+         z-index: $z-index-2;
+         min-height: $secondFooterHeight;
+     }
+     > .footer {
+         order: 5;
+         z-index: $z-index-2;
+         min-height: $footerHeight;
+     }
+     /*----------------风格----------------*/
+     > .header {
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+         align-items: stretch;
+         background-color: $color-main;
+         color: #fff;
+         text-align: center;
+         line-height: $headerHeight;
+ 
+         > .ctrl-left {
+             order: 0;
+         }
+         > .label {
+             flex: 1 1 auto;
+             order: 1;
+             @include text-line(1);
+         }
+         > .ctrl-right {
+             order: 2;
+         }
+         > .ctrl-left,
+         > .ctrl-right {
+             white-space: nowrap;
+             display: flex;
+             flex-direction: row;
+             justify-content: center;
+             align-items: stretch;
+             > .btn {
+                 min-width: $headerHeight;
+                 height: auto;
+                 padding: 0;
+             }
+         }
+     }
+     > .second-header {
+         border-bottom: 1px solid $color-border;
+     }
+     > .footer {
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+         align-items: stretch;
+         line-height: calc(#{$footerHeight} - 1px);
+         border-top: 1px solid $color-border;
+         //background-color: #fff;
+ 
+         > .btn {
+             flex-grow: 1;
+             width: 1%;
+         }
+     }
+     > .second-footer {
+         border-top: 1px solid $color-border;
+     }
+     > .container {
+     }
+ }
+ 

@@ -6,9 +6,11 @@ import App from './App'
 import router from './router'
 import './mock'
 import '@/assets/style/app.scss'
+import components from './components' // 注册全局组件
 
 Vue.config.productionTip = false
 
+Vue.use(components)
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
