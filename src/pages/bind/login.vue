@@ -1,11 +1,12 @@
 <template>
-  <div class="page">
+  <div v-title="pageData.title" class="page">
     login
   </div>
 </template>
 
 <script>
 import mixinBase from '@m/base'
+import {mapGetters, mapMutations, mapState} from 'vuex'
 
 export default {
     name: 'login',
@@ -17,8 +18,18 @@ export default {
             msg: 'ssssssssssssss'
         }
     },
+    computed: {
+        ...mapState('user', ['sessionId'])
+    },
+    methods: {
+        ...mapMutations('user', ['setSessionId'])
+
+    },
     mounted () {
         console.log(this.pageData)
+
+        console.log(this)
+        console.log(this.sessionId)
     }
 }
 </script>

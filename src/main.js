@@ -4,6 +4,7 @@ import './utils/flex.js' // 高清解决方案
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import './mock'
 import '@/assets/style/app.scss'
 import components from './components' // 注册全局组件
@@ -16,6 +17,7 @@ Vue.use(components)
 new Vue({
     el: '#app',
     router,
+    store,
     components: { App },
     template: '<App/>'
 })

@@ -2,6 +2,8 @@
  * Created by jianchun.dai on 2018/12/26.
  *
  */
+import {mapGetters, mapMutations} from 'vuex'
+
 export default {
     data () {
         return {
@@ -9,6 +11,8 @@ export default {
         }
     },
     computed: {// 计算属性
+        ...mapGetters('user', ['sessionId']),
+
         pageData () {
             return {
                 title: this.$route.meta.title || 'vue'
@@ -19,6 +23,7 @@ export default {
 
     },
     methods: {// 方法
+        ...mapMutations('user', ['setSessionId'])
 
     },
     // 路由守卫
@@ -46,6 +51,7 @@ export default {
         console.log('beforeCreate 创建前状态===============》')
     },
     created () {
+        console.log(this.sessionId)
         console.log('created 创建完毕状态===============》')
     },
     beforeMount () {

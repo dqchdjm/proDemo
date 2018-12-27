@@ -1,7 +1,10 @@
 import initLodding from '@c/initLodding' // 引入的组建
+import linker from '@c/linker'
 
 const components = [
-    initLodding
+    initLodding,
+    linker
+
 ]
 export default{
     install (Vue) {

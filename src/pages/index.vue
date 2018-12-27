@@ -8,7 +8,9 @@
     </div>
     <div class="hello">
       <h1>{{ msg }}</h1>
+    <linker :to="`/login`" >
       <h2>Essential Links</h2>
+    </linker>
       <initLodding />
       <!-- <img src="~@/assets/logo.png" alt=""> -->
     </div>
@@ -19,6 +21,8 @@
 import Home from '@a/home'
 import ut from '@u/comm'
 import mixinBase from '@m/base'
+import {mapMutations, mapState} from 'vuex'
+
 export default {
     name: 'index',
     mixins: [mixinBase],
@@ -29,12 +33,21 @@ export default {
             msg: 'ssssssssssssss'
         }
     },
+    computed: {
+        ...mapState('user', ['sessionId'])
+    },
+    methods: {
+        ...mapMutations('user', ['setSessionId'])
+
+    },
     created () {
         console.log(this.pageData)
     },
     mounted () {
         console.log(this.$route)
         console.log(ut)
+        this.setSessionId(1)
+
         // this.$utils.comm.alert()
         // ut.alert()
         // Home.home().then((d) => {
@@ -49,6 +62,7 @@ export default {
             console.log(data)
         })
     }
+
 }
 </script>
 
