@@ -1,0 +1,83 @@
+@charset "utf-8";
+/**
+ * Created by henian.xu on 2018/1/2.
+ *
+ */
+
+.popup-wrap {
+    // 只留了做弹框挂载用
+    > .popup,
+    > .page {
+        z-index: $z-index-7;
+    }
+}
+
+.popup {
+    position: absolute;
+    z-index: $z-index-7;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(35, 24, 21, .8);
+
+    > .inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+
+        > .header,
+        > .footer {
+            height: 1rem;
+            line-height: 1rem;
+            flex: 0 0 auto;
+        }
+        > .header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            border-bottom: 1px solid $color-border;
+            padding: 0 $padding-small;
+
+            > .label {
+                flex: 1 1 auto;
+                text-align: center;
+                color: $color-main;
+            }
+            > .btn {
+                border-radius: 0;
+                border: 0;
+            }
+            > * {
+                flex: 0 0 auto;
+            }
+        }
+        > .footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            text-align: center;
+            //border-top: 1px solid $color-border;
+            margin-bottom: -2px;
+            > .btn {
+                flex: 1 1 auto;
+                width: 1%;
+            }
+        }
+        > .body {
+            flex: 1 1 auto;
+            padding: $padding;
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+}
+

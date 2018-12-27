@@ -47,6 +47,7 @@ export default {
         console.log(this.$route)
         console.log(ut)
         this.setSessionId(1)
+        this.$messageBox.tips('请选择收货地址')
 
         // this.$utils.comm.alert()
         // ut.alert()

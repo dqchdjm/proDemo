@@ -1,9 +1,11 @@
 import initLodding from '@c/initLodding' // 引入的组建
 import linker from '@c/linker'
+import messageBox from '@c/messageBox'
 
 const components = [
     initLodding,
-    linker
+    linker,
+    messageBox
 
 ]
 export default{

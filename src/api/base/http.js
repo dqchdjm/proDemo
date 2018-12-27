@@ -1,5 +1,6 @@
 import Axios from 'axios'
 // import Config from './config'
+import Vue from 'vue'
 
 class Http {
     constructor () {
@@ -37,6 +38,7 @@ class Http {
                 if (!json.config._E) {
                     return Promise.resolve(json)
                 }
+                Vue.prototype.$messageBox.alert(result.error_msg, '温馨提示')
                 return Promise.reject(json)
             } else {
                 return Promise.resolve(json)
