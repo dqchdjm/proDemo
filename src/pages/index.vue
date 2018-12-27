@@ -1,5 +1,5 @@
 <template>
-  <div v-title="pageData.title" class="page">
+  <div v-title="pageData.title" class="page left-enter-active">
     <p>{{ctitle}}</p>
     <div>
       <img v-for="(item, index) in list" :key="index" :src="item">

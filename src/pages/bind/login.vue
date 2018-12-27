@@ -1,12 +1,13 @@
 <template>
-  <div v-title="pageData.title" class="page">
+  <div v-title="pageData.title" class="page left-enter-active">
     login
   </div>
 </template>
 
 <script>
 import mixinBase from '@m/base'
-import {mapGetters, mapMutations, mapState} from 'vuex'
+import {mapMutations, mapState} from 'vuex'
+// import {mapGetters, mapMutations, mapState} from 'vuex'
 
 export default {
     name: 'login',
