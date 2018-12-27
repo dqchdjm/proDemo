@@ -7,6 +7,7 @@ import router from './router'
 import './mock'
 import '@/assets/style/app.scss'
 import components from './components' // 注册全局组件
+import './custom' // 一些 vue 自定的杂项
 
 Vue.config.productionTip = false
 

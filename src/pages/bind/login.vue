@@ -5,9 +5,11 @@
 </template>
 
 <script>
+import mixinBase from '@m/base'
 
 export default {
     name: 'login',
+    mixins: [mixinBase],
     data () {
         return {
             list: [],
@@ -16,7 +18,7 @@ export default {
         }
     },
     mounted () {
-
+        console.log(this.pageData)
     }
 }
 </script>

@@ -1,3 +1,7 @@
+/**
+ * Created by jianchun.dai on 2018/12/26.
+ *
+ */
 export default {
     data () {
         return {
@@ -5,7 +9,11 @@ export default {
         }
     },
     computed: {// 计算属性
-
+        pageData () {
+            return {
+                title: this.$route.meta.title || 'vue'
+            }
+        }
     },
     watch: {// 观察属性
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div v-title="pageData.title" class="page">
     <p>{{ctitle}}</p>
     <div>
       <img v-for="(item, index) in list" :key="index" :src="item">
@@ -30,12 +30,12 @@ export default {
         }
     },
     created () {
-        console.log('created 创建完毕状态===============》')
+        console.log(this.pageData)
     },
     mounted () {
         console.log(this.$route)
         console.log(ut)
-
+        // this.$utils.comm.alert()
         // ut.alert()
         // Home.home().then((d) => {
         //     console.log(d)
