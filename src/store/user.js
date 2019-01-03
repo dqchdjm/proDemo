@@ -15,6 +15,7 @@ export default {
             state.sessionId = ''
             Session.remove('sessionId')
         }
+
     },
     getters: {
         userId (state) {

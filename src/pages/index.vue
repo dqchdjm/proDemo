@@ -1,5 +1,5 @@
 <template>
-  <div v-title="pageData.title" class="page left-enter-active">
+  <div v-title="pageData.title" class="page ">
     <p>{{ctitle}}</p>
     <div>
       <img v-for="(item, index) in list" :key="index" :src="item">
@@ -11,7 +11,7 @@
     <linker :to="`/login`" >
       <h2>Essential Links</h2>
     </linker>
-      <initLodding />
+      <!-- <initLodding /> -->
       <!-- <img src="~@/assets/logo.png" alt=""> -->
     </div>
   </div>
@@ -47,7 +47,7 @@ export default {
         console.log(this.$route)
         console.log(ut)
         this.setSessionId(1)
-        this.$messageBox.tips('请选择收货地址')
+        // this.$messageBox.tips('请选择收货地址')
 
         // this.$utils.comm.alert()
         // ut.alert()

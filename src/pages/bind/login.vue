@@ -1,5 +1,5 @@
 <template>
-  <div v-title="pageData.title" class="page left-enter-active">
+  <div v-title="pageData.title" class="page ">
     login
   </div>
 </template>
