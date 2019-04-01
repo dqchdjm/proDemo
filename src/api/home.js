@@ -3,16 +3,13 @@ import Http from './base/http'
 class Home extends Http {
     constructor () {
         super()
-        this.url = '/api/livebroadcast'
+        this.url = '/api'
     }
-    home () {
-        return super.get('/api/RedEnvelope/index', {id: 10})
+    home (params) {
+        return super.get(`${this.url}/getData`,params)
     }
-    users () {
-        return super.get('/users')
-    }
-    login () {
-        return super.post('/login')
+    postHome (params) {
+        return super.post(`${this.url}/postData`,params)
     }
 }
 

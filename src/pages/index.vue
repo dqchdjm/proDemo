@@ -1,70 +1,48 @@
 <template>
-  <div v-title="pageData.title" class="page ">
-    <p>{{ctitle}}</p>
-    <div>
-      <img v-for="(item, index) in list" :key="index" :src="item">
-      <i class="icon f-icon"></i>
-      <i class="icon1 f-icon"></i>
-    </div>
-    <div class="hello">
-      <h1>{{ msg }}</h1>
-    <linker :to="`/login`" >
+  <div v-title="pageData.title" class="page">
+    <linker :to="`/login`">
       <h2>Essential Links</h2>
     </linker>
-      <!-- <initLodding /> -->
-      <!-- <img src="~@/assets/logo.png" alt=""> -->
-    </div>
+    <!-- <initLodding /> -->
   </div>
 </template>
 
 <script>
-import Home from '@a/home'
-import ut from '@u/comm'
-import mixinBase from '@m/base'
-import {mapMutations, mapState} from 'vuex'
+import ut from "@u/comm";
+import mixinBase from "@m/base";
+import { mapMutations, mapState } from "vuex";
 
 export default {
-    name: 'index',
-    mixins: [mixinBase],
-    data () {
-        return {
-            list: [],
-            ctitle: '',
-            msg: 'ssssssssssssss'
-        }
-    },
-    computed: {
-        ...mapState('user', ['sessionId'])
-    },
-    methods: {
-        ...mapMutations('user', ['setSessionId'])
+  name: "index",
+  mixins: [mixinBase],
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState("user", ["sessionId", "sessionName"])
+  },
+  methods: {
+    ...mapMutations("user", ["setSessionId"])
+  },
+  created() {
+    console.log(this.pageData);
+  },
+  mounted() {
+    console.log(this.$route);
+    console.log(ut);
+    console.log(this.sessionName);
+  
+    // this.setSessionId(1);
+    // this.$messageBox.tips('请选择收货地址')
 
-    },
-    created () {
-        console.log(this.pageData)
-    },
-    mounted () {
-        console.log(this.$route)
-        console.log(ut)
-        this.setSessionId(1)
-        // this.$messageBox.tips('请选择收货地址')
+    // this.$utils.comm.alert()
+    // ut.alert()
 
-        // this.$utils.comm.alert()
-        // ut.alert()
-        // Home.home().then((d) => {
-        //     console.log(d)
-        // })
-        Home.users().then(({ data }) => {
-            console.log(data)
-            this.ctitle = data.data.ctitle
-            this.list = data.data.img
-        })
-        Home.login().then(({ data }) => {
-            console.log(data)
-        })
-    }
-
-}
+    // Home.postHome({ id: "7"}).then(d => {
+    //   console.log(d);
+    // });
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -90,14 +68,12 @@ export default {
 }
 .icon {
   &:before {
-    content: '\e611';
-
+    content: "\e611";
   }
 }
 .icon1 {
   &:before {
-    content: '\eabe';
-
+    content: "\eabe";
   }
 }
 </style>

@@ -3,6 +3,7 @@ export default {
     namespaced: true,
     state: {
         sessionId: Session.get('sessionId') || '',
+        sessionName: Session.get('sessionName') || '',
         userName: Local.get('userName') || 'djc'
 
     },
@@ -14,8 +15,15 @@ export default {
         removeSessionId (state) {
             state.sessionId = ''
             Session.remove('sessionId')
-        }
-
+        },
+        setSessionName (state, id) {
+            state.sessionName = id
+            Session.set('sessionName', id)
+        },
+        removeSessionName (state) {
+            state.sessionId = ''
+            Session.remove('sessionName')
+        },
     },
     getters: {
         userId (state) {

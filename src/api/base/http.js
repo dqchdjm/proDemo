@@ -1,11 +1,25 @@
 import Axios from 'axios'
-// import Config from './config'
+import Config from './config'
 import Vue from 'vue'
+import { comm } from '../../utils/index'
+
+
+// Axios.defaults.headers.common['token'] = comm.getCoolie("AUTHKEY")?comm.getCoolie("AUTHKEY"):"";
+// let suAccount = comm.getCoolie("userAccount")?comm.getCoolie("userAccount"):"";
+// Axios.defaults.headers.common['suAccount'] = encodeURI(suAccount);
+
+// 本地
+Axios.defaults.baseURL = './api';
+Axios.defaults.baseReportURL = 'http://39.108.211.52:28765';
+
+// 测试
+// Axios.defaults.baseURL = '../../asapApi';//nginx代理地址
+// Axios.defaults.baseReportURL = 'http://39.108.211.52:28765';
 
 class Http {
-    constructor () {
+    constructor() {
         this.axios = Axios
-        // this.axios = Axios.create(Config)  /* 正式调用接口时打开 */
+        this.axios = Axios.create(Config)
         this.createGlobalInterceptor()
         this.cancel = null
         this.promiseArr = {}
@@ -14,7 +28,7 @@ class Http {
     /**
      * 创建全局拦截器
      */
-    createGlobalInterceptor () {
+    createGlobalInterceptor() {
         // 请求拦截
         this.addRequestInterceptor((params) => {
             if (this.promiseArr[params.url] && params._C) {
@@ -33,15 +47,15 @@ class Http {
         // 响应拦截
         this.addResponseInterceptor((json) => {
             const result = json.data
-            // 接口错误提示信息全局统一拦截提示
+            // 接口错误提示信息全局统一拦截提示  error_code==>根据后台返回数据判断
             if (+result.error_code !== 0) {
                 if (!json.config._E) {
                     return Promise.resolve(json)
                 }
                 Vue.prototype.$messageBox.alert(result.error_msg, '温馨提示')
-                return Promise.reject(json)
+                return Promise.reject(json.data)
             } else {
-                return Promise.resolve(json)
+                return Promise.resolve(json.data)
             }
         }, (_error) => {
             const status = typeof _error.response === 'object' && _error.response.status
@@ -79,9 +93,10 @@ class Http {
      * @param error
      * @returns {number}
      */
-    addRequestInterceptor (fn, error = () => {
+    addRequestInterceptor(fn, error = () => {
     }) {
         return this.axios.interceptors.request.use(fn, (_error) => {
+
             error(_error)
             this.feedbackError(_error)
             return Promise.reject(_error)
@@ -93,7 +108,7 @@ class Http {
      * @param error
      * @returns {number}
      */
-    addResponseInterceptor (fn, error = () => {
+    addResponseInterceptor(fn, error = () => {
     }) {
         return this.axios.interceptors.response.use(fn, (_error) => {
             error(_error)
@@ -105,7 +120,7 @@ class Http {
     /**
      * 错误反馈
      */
-    feedbackError (_error) {
+    feedbackError(_error) {
         // TODO 取不到请求 then 方法里的错误
         console.log('没有收集错误的接口！', _error)
     }
@@ -113,7 +128,7 @@ class Http {
     /**
      * 创建取消令牌
      */
-    createCancelToken () {
+    createCancelToken() {
         const cancelToken = this.axios.CancelToken
         return cancelToken.source()
     }
@@ -123,7 +138,7 @@ class Http {
      * @param params
      * @returns {AxiosPromise}
      */
-    get (url, params = {}, cfg = {}) {
+    get(url, params = {}, cfg = {}) {
         cfg = {
             ...cfg,
             _C: !params._C,
@@ -134,7 +149,7 @@ class Http {
         params = {
             ...params,
             // user_id: Store.getters['user/userId'],
-            channel_type: 'wap',
+            // channel_type: 'wap',
             _T: new Date().getTime()
         }
         return this.axios.get(url, {
@@ -153,7 +168,7 @@ class Http {
      * @param cfg
      * @returns {AxiosPromise}
      */
-    post (url, params = {}, cfg = {}) {
+    post(url, params = {}, cfg = {}) {
         cfg = {
             ...cfg,
             _C: !params._C,
@@ -162,7 +177,7 @@ class Http {
                 this.cancel = cancel
             })
         }
-        params.channel_type = 'wap'
+        // params.channel_type = 'wap'
         // params.user_id = Store.getters['user/userId']
         delete params._C
         delete params._E
@@ -175,7 +190,7 @@ class Http {
     * @param cfg
     * @returns {AxiosPromise}
     */
-    custom (url, params = {}, cfg = {}) {
+    custom(url, params = {}, cfg = {}) {
         cfg = {
             ...cfg,
             _C: !params._C,
@@ -184,7 +199,7 @@ class Http {
                 this.cancel = cancel
             })
         }
-        params.channel_type = 'wap'
+        // params.channel_type = 'wap'
         delete params._C
         delete params._E
         return this.axios.post(url, params, cfg)

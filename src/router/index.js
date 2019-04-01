@@ -7,6 +7,9 @@ const routerInstance = new Router({
         {
             path: '/',
             name: 'index',
+            meta: {
+                title: '首页'
+            },
             component: (resolve) => require(['@p/index.vue'], resolve)
         },
         {
@@ -24,4 +27,19 @@ routerInstance.beforeEach((to, from, next) => {
 })
 routerInstance.afterEach((to, from) => {
 })
+// router.beforeEach((to, from, next) => {
+//     iView.LoadingBar.start();
+//     if((!store.getters.userToken||!store.getters.userInfo)&&to.path!='/login'){
+//       router.replace({
+//         name: 'Login'
+//       });
+//       iView.LoadingBar.finish();
+//       return;
+//     }
+//     document.title = (to.meta&&to.meta.title?(to.meta.title+'-'):'')+"资产评估系统";
+//     next();
+//   });
+//   router.afterEach(route => {
+//     iView.LoadingBar.finish();
+//   });
 export default routerInstance

@@ -3,6 +3,7 @@
  *
  */
 import {mapGetters, mapMutations} from 'vuex'
+import Home from "@a/home";
 
 export default {
     data () {
@@ -11,11 +12,10 @@ export default {
         }
     },
     computed: {// 计算属性
-        ...mapGetters('user', ['sessionId']),
-
+        ...mapGetters('user', ['sessionId']),  
         pageData () {
             return {
-                title: this.$route.meta.title || 'vue'
+                title: this.$route.meta.title 
             }
         }
     },
@@ -23,7 +23,7 @@ export default {
 
     },
     methods: {// 方法
-        ...mapMutations('user', ['setSessionId'])
+        ...mapMutations('user', ['setSessionId','setSessionName'])
 
     },
     // 路由守卫
@@ -52,28 +52,24 @@ export default {
     },
     created () {
         console.log(this.sessionId)
-        console.log('created 创建完毕状态===============》')
     },
     beforeMount () {
-        console.log('beforeMount 挂载前状态===============》')
     },
     mounted () {
-        console.log('mounted 挂载结束状态===============》')
+        Home.home({ id: "4"}).then(d => {
+            console.log(d);
+            this.setSessionName(d.data.title)
+          });
     },
     beforeUpdate () {
-        console.log('beforeUpdate 更新前状态===============》')
     },
     updated () {
-        console.log('updated 更新完成状态===============》')
     },
     activated () {
-        console.log('activated 显示状态===============》')
     },
     beforeDestroy () {
-        console.log('beforeDestroy 销毁前状态===============》')
     },
     destroyed () {
-        console.log('destroyed 销毁完成状态===============》')
     },
     errorCaptured (h, err) {
         console.log(h, err)

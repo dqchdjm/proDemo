@@ -108,6 +108,20 @@ class Utils {
         }
         return popupWrap
     }
+    esetCoolie(key,value,cb){
+        storage.setItem(('cok_'+key),value);
+        Cookies.set(key,value, { expires: 1 });
+        if(cb){
+          cb();
+        }
+    }
+    getCoolie(key){
+        let value = Cookies.get(key);
+        if(!value){
+          value = storage.getItem('cok_'+key);
+        }
+        return value;
+    }
 }
 
 export default new Utils()

@@ -7,17 +7,9 @@ export default {
     /* `transformRequest`允许在请求数据发送到服务器之前对其进行更改
     这只适用于请求方法'PUT'，'POST'和'PATCH'
     数组中的最后一个函数必须返回一个字符串，一个 ArrayBuffer或一个 Stream */
-    transformRequest: [
-        (data) => {
-            data = Qs.stringify(data, {
-                arrayFormat: 'repeat',
-                serializeDate: d => d.getTime()
-            })
-            return data
-        }
-    ],
+
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json;charset=utf-8'
         // 'token': '',
     },
     params: {},
@@ -31,7 +23,7 @@ export default {
     },
     data: {},
     timeout: 30000,
-    withCredentials: false,
+    withCredentials: true,
     responseType: 'json',
     maxContentLength: 2000,
     validateStatus: function (status) {

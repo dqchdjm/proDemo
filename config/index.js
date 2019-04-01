@@ -11,17 +11,15 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {
-          // target: 'https://wxqz2.qztvxwgj.com',
-          target: 'http://114.55.84.65',
-          changeOrigin: true,
-          pathRewrite: {
-              '^/api': 'api',
-          },
-      },
-      '/oss-up': {
-          // target: 'https://wxqz2.qztvxwgj.com',
-          target: 'http://114.55.84.65',
+      '/api':{
+        target:'http://192.168.0.195:1339',//http://192.168.0.140:28763 //http://192.168.0.11:28763 http://localhost:28763 //http://192.168.0.140:28763
+        changeOrigin:true,
+        pathRewrite: {
+          '^/api': '/api'
+        },
+      }, 
+      '/oss-up': { 
+          target: 'http://39.108.211.52:28765',
           changeOrigin: true,
           pathRewrite: {
               '^/oss-up': 'oss-up',
@@ -31,7 +29,7 @@ module.exports = {
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 3434, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
