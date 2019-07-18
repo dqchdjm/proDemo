@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div id="app"  class="pages">
         <transition :name="transitionName">
           <navigation>
@@ -6,7 +6,7 @@
           </navigation>
         </transition>
   </div>
-</template>
+</template> 
 
 <script>
 
